@@ -1,0 +1,138 @@
+class watch:
+
+    def __init__(self, name, brand, colour, price = 0 ):
+        self.name = name
+        self.brand = brand
+        self.colour = colour
+        self.price = price
+
+class watch:
+
+    books = []
+    selectedwatch = []
+
+    def __init__(self, name, brand, colour, price ):
+        b = Book(name,brand,colour = colour, price = price)
+        self.watch.append(b)
+    
+    def show(self):
+        print("============== AVAILBALE watch ==========")
+        
+        pos=0
+
+        for watch in self.watch:
+            print("============ ", pos, " ==========") 
+            pos += 1   
+            self.display(watch)
+            
+    
+    def select(self):
+        print("========== SELECT A watch =======")
+        print("====== HOW MANY watch YOU WANT? ======")
+        neededwatch = int(input())
+
+        for i in range(0, neededwatch ):
+            print("====== INPUT THE watch model ======")
+            selectedwatch = int(input())
+            print("========== SELECTED A watch =======")
+            b = self.getwatchById(selectedwatch - 1)
+            self.selectedwatch.append(b)
+            print(self.display(b))
+
+    def getwatchById(self, position):
+        return self.watch[position]
+
+    def display(self, watch):
+        print("watch name : ", watch.name)
+        print("watch colour : ", watch.colour)
+        print("watch price : ", watch.price)
+        print("watch brand : ", watch.brand)
+
+    def selectedBooks(self):
+        return self.selectedBook
+
+
+class BillCounter:
+
+    books = []
+    def __init__(self, myBooks):
+        self.books = myBooks
+    
+    def display(self):
+        pos = 0
+        for watch in self.watch:
+            print("============ BILL COUNTER watch ========")
+            pos += 1
+            print("============ WATCH MODEL", pos,"======")
+        print("watch name : ", watch.name)
+        print("watch colour : ", watch.colour)
+        print("watch price : ", watch.price)
+        print("watch brand : ", watch.brand)
+    def getTotal(self):
+        total = sum(map(lambda b : b.price, self.watch))
+        print("=========== TOTAL PRICE =======")
+        print(total)
+    
+    def getMax(self):
+        total = max(map(lambda b : b.price, self.watch))
+        print("=========== MAX PRICE =======")
+        print(total)
+
+    def getMin(self):
+        total = min(map(lambda b : b.price, self.watch))
+        print("=========== MIN PRICE =======")
+        print(total)
+
+    def getBRAND(self):
+        print("================== BRAND =============")
+        brand = map(lambda a : a.brand, self.watch)
+        for brand in brand:
+            print(brand)
+    
+
+    def delete(self):
+        print("=========== DO YOU WANT DELETE? 1 = YES, 0 = NO")
+        choice = int(input())
+        if (choice == 1):
+            print("=========== ENTER WATCH MODEL =======")
+            position = int(input())
+            self.watch.remove(self.getWATCHById(position))
+        else:
+            print("=========== NO WATCH =========")
+
+    def getWATCHById(self, position):
+        return self.watch[position - 1]
+
+    
+if "__MAIN__":
+
+    print("========== WELCOME TO SMART WATCH ==========")
+
+    bs = SmartWatch("APPLE", "ABC", "ABC123", 299)
+    bs = BookStore("BHOAT", "XYZ", "XYZ123", 499)
+    bs = BookStore("1+", "ABC", "ABC567", 399)
+    bs = BookStore("SAMSUNG", "XYZ", "XYZ567", 699)
+    
+    bs.show()
+
+    bs.select()
+
+    selectedwatches = bs.selectedwatches()
+    
+    print(selectedWatches)
+
+    bc = BillCounter(selectedWatches)
+
+    bc.display()
+
+    bc.delete()
+
+    bc.getTotal()
+
+    bc.getMax()
+
+    bc.getMin()
+
+    bc.getAuthors()
+
+
